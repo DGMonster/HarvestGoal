@@ -1,0 +1,5 @@
+package-as: HarvestGoal
+
+ignore:
+  - README.md
+  - .github
