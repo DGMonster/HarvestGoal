@@ -1,5 +1,8 @@
 package-as: HarvestGoal
 
+addons:
+  HarvestGoal: HarvestGoal
+
 curseforge:
   project-id: 1477092
 
