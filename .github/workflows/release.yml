@@ -1,0 +1,21 @@
+name: Package Addon
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Package and release addon
+        uses: BigWigsMods/packager@v2
+        with:
+          args: -o
+        env:
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
