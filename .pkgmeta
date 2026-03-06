@@ -1,8 +1,5 @@
 package-as: HarvestGoal
 
-curseforge:
-  project-id: 1477092
-
 ignore:
   - README.md
   - .github
