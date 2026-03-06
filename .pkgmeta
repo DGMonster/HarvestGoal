@@ -3,9 +3,6 @@ package-as: HarvestGoal
 curseforge:
   project-id: 1477092
 
-move-folders:
-  HarvestGoal: HarvestGoal
-
 ignore:
   - README.md
   - .github
