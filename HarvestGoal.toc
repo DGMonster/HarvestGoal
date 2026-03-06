@@ -2,7 +2,7 @@
 ## Title: HarvestGoal
 ## Notes: Lightweight gathering goal tracker.
 ## Author: GrazyMonster
-## Version: 0.1.0
+## Version: @project-version@
 ## SavedVariablesPerCharacter: HarvestGoalDB
 ## IconTexture: Interface\AddOns\HarvestGoal\Textures\logo
 
