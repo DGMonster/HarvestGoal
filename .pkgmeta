@@ -3,3 +3,8 @@ package-as: HarvestGoal
 ignore:
   - README.md
   - .github
+
+# Beispiel für mehrere WoW-Versionen
+game-versions:
+  - 120001   # Retail
+  - 20505    # TBC Classic
