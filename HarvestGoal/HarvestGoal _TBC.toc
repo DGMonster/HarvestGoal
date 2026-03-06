@@ -1,0 +1,12 @@
+## Interface: 20505
+## Title: HarvestGoal
+## Notes: Lightweight gathering goal tracker.
+## Author: GrazyMonster
+## Version: 0.1.0
+## SavedVariablesPerCharacter: HarvestGoalDB
+## IconTexture: Interface\AddOns\HarvestGoal\Textures\logo
+
+Init.lua
+Core.lua
+Layout.lua
+Minimap.lua
