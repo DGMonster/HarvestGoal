@@ -1,4 +1,4 @@
-name: Package Addon
+name: Package HarvestGoal
 
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - name: Package and release addon
         uses: BigWigsMods/packager@v2
         with:
-          args: -o
+          args: -c -o
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
           CF_PROJECT_ID: 1477092
