@@ -19,3 +19,4 @@ jobs:
           args: -o
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          CF_PROJECT_ID: 1477092
