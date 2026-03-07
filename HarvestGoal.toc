@@ -1,5 +1,5 @@
 ## Interface: 120001
-## Interface-Classic: 11505
+## Interface-Classic: 11508
 ## Interface-TBC: 20505
 
 ## Title: HarvestGoal
