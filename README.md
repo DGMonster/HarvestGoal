@@ -52,10 +52,8 @@ HarvestGoal is **actively maintained** and will continue to receive updates and 
 
 Planned improvements include:
 
-• Configurable slot counts  
-• Additional tracking features  
+• Configurable slot counts    
 • UI improvements and quality-of-life options  
-• Further customization options  
 
 ---
 
