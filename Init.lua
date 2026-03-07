@@ -6,6 +6,7 @@ local HG = {}
 _G[addonName] = HG
 
 HG.name = addonName
+HG.VERSION = "@project-version@"
 
 ------------------------------------------------------------
 -- Localization Table (will be filled by language files)
@@ -49,6 +50,7 @@ local defaults = {
 ------------------------------------------------------------
 
 local function CopyDefaults(source, target)
+
     if type(source) ~= "table" then
         return target
     end
@@ -79,17 +81,30 @@ loader:SetScript("OnEvent", function(self, event, name)
         return
     end
 
+    --------------------------------------------------------
     -- Apply default settings
+    --------------------------------------------------------
+
     HarvestGoalDB = CopyDefaults(defaults, HarvestGoalDB)
 
+    --------------------------------------------------------
     -- Initialize addon
+    --------------------------------------------------------
+
     if HG.Init then
         HG:Init()
     end
 
+    --------------------------------------------------------
     -- Stop listening after initialization
+    --------------------------------------------------------
+
     self:UnregisterEvent("ADDON_LOADED")
 
-    -- Debug message
-    print("|cff3cb371HarvestGoal|r loaded.")
+    --------------------------------------------------------
+    -- Load message
+    --------------------------------------------------------
+
+    print("|cff3cb371HarvestGoal|r v" .. HG.VERSION .. " loaded.")
+
 end)
