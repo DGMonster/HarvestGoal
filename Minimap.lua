@@ -1,46 +1,91 @@
+-- HarvestGoal - Minimap.lua
+-- Handles the minimap button, dragging and tooltip
+
 local addonName = ...
 local HG = _G[addonName]
 
+local L = HG.L or {}
+
+------------------------------------------------------------
+-- Create Minimap Button
+------------------------------------------------------------
+
 function HG:CreateMinimapButton()
+
     if self.minimapButton then
         return
     end
 
-    -- Sicherstellen, dass DB-Tabellen existieren
+    --------------------------------------------------------
+    -- Ensure DB exists
+    --------------------------------------------------------
+
     HarvestGoalDB = HarvestGoalDB or {}
     HarvestGoalDB.minimap = HarvestGoalDB.minimap or {}
+
     HarvestGoalDB.minimap.angle = HarvestGoalDB.minimap.angle or 45
 
+    --------------------------------------------------------
+    -- Button
+    --------------------------------------------------------
+
     local btn = CreateFrame("Button", "HarvestGoalMinimapButton", Minimap)
+
     btn:SetSize(32, 32)
     btn:SetFrameStrata("MEDIUM")
     btn:SetFrameLevel(Minimap:GetFrameLevel() + 5)
+
     btn:SetMovable(true)
     btn:EnableMouse(true)
     btn:RegisterForDrag("LeftButton")
+
     btn:SetHighlightTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight")
 
+    --------------------------------------------------------
     -- Icon
+    --------------------------------------------------------
+
     local icon = btn:CreateTexture(nil, "ARTWORK")
+
     icon:SetTexture("Interface\\AddOns\\HarvestGoal\\Textures\\logo")
     icon:SetAllPoints()
+
     btn.icon = icon
 
-    -- Kreis-Maske
+    --------------------------------------------------------
+    -- Circular Mask
+    --------------------------------------------------------
+
     local mask = btn:CreateMaskTexture()
-    mask:SetTexture("Interface\\Minimap\\UI-Minimap-Background", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE")
+
+    mask:SetTexture(
+        "Interface\\Minimap\\UI-Minimap-Background",
+        "CLAMPTOBLACKADDITIVE",
+        "CLAMPTOBLACKADDITIVE"
+    )
+
     mask:SetAllPoints()
+
     icon:AddMaskTexture(mask)
 
-    -- Goldener Ring
+    --------------------------------------------------------
+    -- Golden Border
+    --------------------------------------------------------
+
     local border = btn:CreateTexture(nil, "OVERLAY")
+
     border:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
     border:SetSize(53, 53)
     border:SetPoint("TOPLEFT")
 
-    -- Position berechnen
+    --------------------------------------------------------
+    -- Position Calculation
+    --------------------------------------------------------
+
     local function UpdatePosition()
+
         local angle = math.rad(HarvestGoalDB.minimap.angle or 45)
+
         local radius = (Minimap:GetWidth() / 2) - 8
 
         local x = math.cos(angle) * radius
@@ -48,63 +93,103 @@ function HG:CreateMinimapButton()
 
         btn:ClearAllPoints()
         btn:SetPoint("CENTER", Minimap, "CENTER", x, y)
+
     end
 
     UpdatePosition()
 
-    -- Drag (nur mit Shift)
+    --------------------------------------------------------
+    -- Dragging (Shift + Drag)
+    --------------------------------------------------------
+
     btn:SetScript("OnDragStart", function(self)
+
         if not IsShiftKeyDown() then
             return
         end
 
         self:SetScript("OnUpdate", function()
+
             local mx, my = Minimap:GetCenter()
+
             local px, py = GetCursorPosition()
+
             local scale = UIParent:GetEffectiveScale()
-            px, py = px / scale, py / scale
+
+            px = px / scale
+            py = py / scale
 
             local angle = math.deg(math.atan2(py - my, px - mx))
+
             HarvestGoalDB.minimap.angle = angle
+
             UpdatePosition()
+
         end)
+
     end)
 
     btn:SetScript("OnDragStop", function(self)
+
         self:SetScript("OnUpdate", nil)
+
     end)
 
-    -- Klicks
+    --------------------------------------------------------
+    -- Click Handling
+    --------------------------------------------------------
+
     btn:SetScript("OnClick", function(self, mouseButton)
+
         if mouseButton == "RightButton" then
+
             if HG.OpenMenu then
                 HG:OpenMenu(HG.frame)
             end
+
             return
         end
 
         if HG.frame and HG.frame:IsShown() then
+
             HG.frame:Hide()
             HarvestGoalDB.visible = false
+
         elseif HG.frame then
+
             HG.frame:Show()
             HarvestGoalDB.visible = true
+
         end
+
     end)
 
+    --------------------------------------------------------
     -- Tooltip
+    --------------------------------------------------------
+
     btn:SetScript("OnEnter", function(self)
+
         GameTooltip:SetOwner(self, "ANCHOR_LEFT")
-        GameTooltip:AddLine("HarvestGoal")
-        GameTooltip:AddLine("Left Click: Toggle Window", 1, 1, 1)
-        GameTooltip:AddLine("Right Click: Options", 1, 1, 1)
-        GameTooltip:AddLine("Shift + Drag: Move", 1, 1, 1)
+
+        GameTooltip:AddLine(L["TITLE"] or "HarvestGoal")
+
+        GameTooltip:AddLine(L["MINIMAP_LEFT"] or "Left Click: Toggle Window", 1, 1, 1)
+        GameTooltip:AddLine(L["MINIMAP_RIGHT"] or "Right Click: Options", 1, 1, 1)
+        GameTooltip:AddLine(L["MINIMAP_DRAG"] or "Shift + Drag: Move", 1, 1, 1)
+
         GameTooltip:Show()
+
     end)
 
     btn:SetScript("OnLeave", function()
+
         GameTooltip:Hide()
+
     end)
 
+    --------------------------------------------------------
+
     self.minimapButton = btn
+
 end
