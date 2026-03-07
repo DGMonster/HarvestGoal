@@ -8,14 +8,14 @@
 
 ## IconTexture: Interface\AddOns\HarvestGoal\Textures\logo
 
-# Localization
-Localization\enUS.lua
-Localization\deDE.lua
-
 # Core
 Init.lua
 Core.lua
 Layout.lua
+
+# Localization
+Localization\enUS.lua
+Localization\deDE.lua
 
 # UI
 Minimap.lua
