@@ -1,4 +1,5 @@
-## Interface: @interface@
+## Interface: 120001
+## Interface: 20505
 ## Title: HarvestGoal
 ## Notes: Lightweight gathering goal tracker.
 ## Author: GrazyMonster
