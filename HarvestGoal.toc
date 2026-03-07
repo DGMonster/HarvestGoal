@@ -14,8 +14,8 @@ Core.lua
 Layout.lua
 
 # Localization
-Localization\enUS.lua
-Localization\deDE.lua
+Locales\enUS.lua
+Locales\deDE.lua
 
 # UI
 Minimap.lua
