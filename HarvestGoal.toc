@@ -1,13 +1,24 @@
 ## Interface: 120001
-## Interface: 20505
+## Interface-Classic: 11505
+## Interface-TBC: 20505
+
 ## Title: HarvestGoal
-## Notes: Lightweight gathering goal tracker.
+## Notes: Lightweight gathering goal tracker
 ## Author: GrazyMonster
 ## Version: @project-version@
+
 ## SavedVariablesPerCharacter: HarvestGoalDB
+
 ## IconTexture: Interface\AddOns\HarvestGoal\Textures\logo
 
+# Localization
+Localization\enUS.lua
+Localization\deDE.lua
+
+# Core
 Init.lua
 Core.lua
 Layout.lua
+
+# UI
 Minimap.lua
