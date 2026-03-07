@@ -1,6 +1,5 @@
 ## Interface: 120001, 120000
 ## Interface-Mists: 50503
-## Interface-Wrath: 38000
 ## Interface-TBC: 20505
 ## Interface-Classic: 11508
 ## Title: HarvestGoal
