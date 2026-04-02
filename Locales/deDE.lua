@@ -43,3 +43,24 @@ L["MENU_RESET"] = "Position zurücksetzen"
 
 L["GOAL_SET"] = "Ziel festlegen"
 L["SET_GOAL"] = "Ziel festlegen"
+
+L["TITLE"] = "HarvestGoal"
+L["SET_GOAL"] = "Ziel festlegen"
+L["RENAME_WINDOW"] = "Fenster umbenennen"
+
+L["MENU_HORIZONTAL"] = "Horizontal"
+L["MENU_VERTICAL"] = "Vertikal"
+L["MENU_LOCK"] = "Fenster sperren"
+L["MENU_UNLOCK"] = "Fenster entsperren"
+L["MENU_RESET"] = "Position zurücksetzen"
+
+L["MENU_NEW_WINDOW"] = "Neues Fenster erstellen"
+L["MENU_RENAME_WINDOW"] = "Fenster umbenennen"
+L["MENU_HIDE_WINDOW"] = "Fenster ausblenden"
+L["MENU_SHOW_WINDOW"] = "Fenster einblenden"
+L["MENU_SHOW_ALL_WINDOWS"] = "Alle Fenster einblenden"
+L["MENU_HIDE_ALL_WINDOWS"] = "Alle Fenster ausblenden"
+L["MENU_DELETE_WINDOW"] = "Fenster löschen"
+
+L["MENU_ADD_SLOT"] = "Slot hinzufügen"
+L["MENU_REMOVE_SLOT"] = "Slot entfernen"
