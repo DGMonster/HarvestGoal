@@ -15,6 +15,7 @@ local L = HG.L
 ------------------------------------------------------------
 
 L["TITLE"] = "HarvestGoal"
+L["TITLE_SECOND"] = "HarvestGoal 2"
 
 ------------------------------------------------------------
 -- Minimap Tooltip
@@ -41,3 +42,4 @@ L["MENU_RESET"] = "Position zurücksetzen"
 ------------------------------------------------------------
 
 L["GOAL_SET"] = "Ziel festlegen"
+L["SET_GOAL"] = "Ziel festlegen"
