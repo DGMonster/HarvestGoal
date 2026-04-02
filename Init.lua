@@ -1,15 +1,15 @@
 -- HarvestGoal - Init.lua
--- Handles addon initialization, database defaults and event startup
+-- Handles addon initialization
 
 local addonName = ...
 local HG = {}
 _G[addonName] = HG
 
 HG.name = addonName
-HG.VERSION = "@project-version@"
+HG.VERSION = @project-version@"
 
 ------------------------------------------------------------
--- Localization Table (will be filled by language files)
+-- Localization Table (filled by language files)
 ------------------------------------------------------------
 
 HG.L = HG.L or {}
@@ -20,53 +20,6 @@ local L = HG.L
 ------------------------------------------------------------
 
 HarvestGoalDB = HarvestGoalDB or {}
-
-------------------------------------------------------------
--- Default Settings
-------------------------------------------------------------
-
-local defaults = {
-    locked = false,
-    layout = "HORIZONTAL",
-    visible = true,
-
-    slots = {
-        { itemID = nil, goal = 0 },
-        { itemID = nil, goal = 0 },
-        { itemID = nil, goal = 0 },
-        { itemID = nil, goal = 0 },
-        { itemID = nil, goal = 0 },
-        { itemID = nil, goal = 0 },
-    },
-
-    minimap = {
-        angle = 45,
-        hide = false,
-    }
-}
-
-------------------------------------------------------------
--- Utility: Copy default values into SavedVariables
-------------------------------------------------------------
-
-local function CopyDefaults(source, target)
-
-    if type(source) ~= "table" then
-        return target
-    end
-
-    target = target or {}
-
-    for key, value in pairs(source) do
-        if type(value) == "table" then
-            target[key] = CopyDefaults(value, target[key])
-        elseif target[key] == nil then
-            target[key] = value
-        end
-    end
-
-    return target
-end
 
 ------------------------------------------------------------
 -- Addon Loading
@@ -82,13 +35,7 @@ loader:SetScript("OnEvent", function(self, event, name)
     end
 
     --------------------------------------------------------
-    -- Apply default settings
-    --------------------------------------------------------
-
-    HarvestGoalDB = CopyDefaults(defaults, HarvestGoalDB)
-
-    --------------------------------------------------------
-    -- Initialize addon
+    -- Initialize addon (Core übernimmt alles)
     --------------------------------------------------------
 
     if HG.Init then
@@ -96,7 +43,7 @@ loader:SetScript("OnEvent", function(self, event, name)
     end
 
     --------------------------------------------------------
-    -- Stop listening after initialization
+    -- Stop listening
     --------------------------------------------------------
 
     self:UnregisterEvent("ADDON_LOADED")
