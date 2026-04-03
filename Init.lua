@@ -6,7 +6,7 @@ local HG = {}
 _G[addonName] = HG
 
 HG.name = addonName
-HG.VERSION = @project-version@"
+HG.VERSION = "@project-version@"
 
 ------------------------------------------------------------
 -- Localization Table (filled by language files)
