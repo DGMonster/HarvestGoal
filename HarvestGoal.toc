@@ -1,4 +1,4 @@
-## Interface: 120100, 120001, 120000, 50504, 50503, 20506, 20505, 11509, 11509
+## Interface: 120100, 120001, 120000, 50504, 50503, 20506, 20505, 11509, 11509, 16001
 ## Title: HarvestGoal
 ## Notes: Lightweight gathering goal tracker
 ## Author: GrazyMonster
