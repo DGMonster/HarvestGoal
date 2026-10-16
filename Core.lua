@@ -524,7 +524,13 @@ function HG:UpdateWindow(windowIndex)
         local itemID = slot.data and slot.data.itemID
 
         if itemID then
-            local count = GetItemCount(itemID, true)
+            local count = 0
+
+		if C_Item and C_Item.GetItemCount then
+    	count = C_Item.GetItemCount(itemID, true) or 0
+		elseif type(GetItemCount) == "function" then
+    	count = GetItemCount(itemID, true) or 0
+		end
             local goal = slot.data.goal or 0
             local color = "|cffffff00"
 
